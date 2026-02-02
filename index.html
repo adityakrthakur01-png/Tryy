@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ankita 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style>
+body {
+    margin: 0;
+    background: #f6b7c1;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card {
+    text-align: center;
+    width: 90%;
+    max-width: 380px;
+}
+
+
+img {
+    width: 180px;
+    margin-bottom: 15px;
+}
+
+
+h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+
+p {
+    font-size: 14px;
+}
+
+
+.buttons {
+    margin-top: 25px;
+}
+
+
+button {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+
+#yes {
+    background: white;
+    transition: transform 0.3s;
+}
+
+
+#no {
+    background: #eee;
+}
+</style>
+</head>
+
+
+<body>
+
+
+<div class="card" id="card">
+    <img id="sticker" src="sticker1.png">
+
+
+    <h2 id="mainText">Will you be my Valentine? 💘</h2>
+    <p id="subText"></p>
+
+
+    <div class="buttons">
+        <button id="yes" onclick="yesClick()">Yes</button>
+        <button id="no" onclick="noClick()">No</button>
+    </div>
+</div>
+
+
+<audio id="song">
+    <source src="arijit.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+let step = 0;
+let yesScale = 1;
+
+
+function noClick() {
+    step++;
+    yesScale += 0.5;
+    document.getElementById("yes").style.transform = `scale(${yesScale})`;
+
+
+    const sticker = document.getElementById("sticker");
+    const mainText = document.getElementById("mainText");
+    const subText = document.getElementById("subText");
+    const noBtn = document.getElementById("no");
+
+
+    if (step === 1) {
+        sticker.src = "sticker2.png";
+        mainText.innerText = "Pls think again 🙄";
+        mainText.style.fontSize = "24px";
+        subText.innerText = "itni jaldi na mat bolo 🥺";
+    }
+
+
+    if (step === 2) {
+        sticker.src = "sticker3.png";
+        mainText.innerText = "Ek baar aur soch lo 😭";
+        mainText.style.fontSize = "20px";
+        subText.innerText = "kyu aisa kar rahi ho maan jaao Ankitaaaaa 🫶";
+    }
+
+
+    if (step === 3) {
+        sticker.src = "sticker4.png";
+        mainText.innerText = "Dil toot jaayega maan jaao na 💔";
+        subText.innerText = "kitna code likhwaogi 😭";
+    }
+
+
+    if (step >= 3) {
+        noBtn.onmouseover = () => {
+            noBtn.style.position = "absolute";
+            noBtn.style.left = Math.random() * 70 + "%";
+            noBtn.style.top = Math.random() * 70 + "%";
+        };
+    }
+}
+
+
+function yesClick() {
+    document.getElementById("song").play();
+
+
+    document.getElementById("card").innerHTML = `
+        <img src="sticker3.png">
+        <h2>I knew it 😁</h2>
+        <p>
+        andar hi andar tum bhi pasand karti ho mujhe 💖<br><br>
+        Tujh ko jo paaya 🥹<br>
+        toh jeena aaya ✨<br><br>
+        ab ye lamha theher jaaye 💫
+        </p>
+        <h3>— Cheesecake 🍰</h3>
+    `;
+}
+</script>
+
+
+</body>
+</html>
